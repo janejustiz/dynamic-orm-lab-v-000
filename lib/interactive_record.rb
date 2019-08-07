@@ -22,8 +22,10 @@ class InteractiveRecord
   column_names.compact
   end
 
-  def initialize
-    
+  def initialize(options={})
+    options.each do |property, value|
+      self.send("#{property}=", value)
+    end
   end
 
   def table_name_for_insert
